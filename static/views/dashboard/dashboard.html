@@ -1,0 +1,204 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- pageheader  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">{{ pageTitle }}</h2>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a ui-sref="app.dashboard"
+                                        class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ pageSubTitle }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end pageheader  -->
+            <!-- ============================================================== -->
+            <div class="ecommerce-widget">
+
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!-- sales  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="card border-3 border-top border-top-primary">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total Agent</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1">{{ agent.length }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end sales  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- new customer  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="card border-3 border-top border-top-primary">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total Member</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1">{{ member.length }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end new customer  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- visitor  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="card border-3 border-top border-top-primary">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total user</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1">{{ users.length }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end visitor  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- total orders  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                        <div class="card border-3 border-top border-top-primary">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total product</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1">{{ products.length }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end total orders  -->
+                    <!-- ============================================================== -->
+                </div>
+
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Active User</h5>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">#</th>
+                                            <th class="border-0">Image</th>
+                                            <th class="border-0">Username</th>
+                                            <th class="border-0">Email</th>
+                                            <th class="border-0">Role</th>
+                                            <th class="border-0">Gender</th>
+                                            <th class="border-0">Address</th>
+                                            <th class="border-0">Bank Name</th>
+                                            <th class="border-0">Account No</th>
+                                            <th class="border-0">Last Login</th>
+                                            <th class="border-0">Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="_profile in profile | limitTo:5">
+                                            <td>{{_profile.id}}</td>
+                                            <td>
+                                                <div class="m-r-10"><img src="{{_profile.profile_photo}}"
+                                                alt="user" class="rounded" width="45"></div>
+                                            </td>
+                                            <td>{{_profile.username.username}}</td>
+                                            <td>{{_profile.username.email}}</td>
+                                            <td>{{_profile.user_type}}</td>
+                                            <td>{{_profile.sex}}</td>
+                                            <td>{{_profile.address}}</td>
+                                            <td>{{_profile.bank_name}}</td>
+                                            <td>{{_profile.bank_count_no}}</td>
+                                            <td>{{_profile.username.last_login | date:'mediumDate'}}</td>
+                                            <td><span class="badge-dot badge-success mr-1"></span>Activate</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end recent orders  -->
+                </div>
+                <div class="row">
+                    <!-- product sales  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Latest Product</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="ct-chart-product ct-golden-section">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">Product Name</th>
+                                            <th class="border-0">Category</th>
+                                            <th class="border-0">Price</th>
+                                            <th class="border-0">Discount</th>
+                                            <th class="border-0">Created At</th>
+                                            <th class="border-0">Updated At</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="product in products | limitTo:8">
+                                            <td>{{product.product_name}}</td>
+                                            <td>{{product.category}}</td>
+                                            <td>{{product.price}} BDT</td>
+                                            <td>{{product.discount_price}} BDT</td>
+                                            <td>{{product.date_created | date:'mediumDate'}}</td>
+                                            <td>{{product.last_updated | date:'mediumDate'}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end product sales  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <!-- ============================================================== -->
+                        <!-- top perfomimg  -->
+                        <!-- ============================================================== -->
+                        <div class="card">
+                            <h5 class="card-header">CEO & Founder</h5>
+                            <div class="card-body p-0">
+                                <h5 class="card-header">Mr. Monir Munna</h5>
+                                <div class="table-responsive">
+                                    <img style="width: 100%" src="static/assets/images/ceo.png" alt="ceo-image">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end top perfomimg  -->
+                        <!-- ============================================================== -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
