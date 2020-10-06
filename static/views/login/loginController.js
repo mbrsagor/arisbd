@@ -16,7 +16,7 @@ app.controller("loginController", function (
                 $location.path("app/dashboard");
             },
             function errorCallback(response) {
-                var status = response.status;
+                let status = response.status;
                 if (status === 400) {
                     $scope.message = "Username or password is incorrect!";
                     toastr.error("Please contact admin or try again later");

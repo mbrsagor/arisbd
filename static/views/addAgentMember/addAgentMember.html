@@ -26,13 +26,6 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="username">Select User</label>
-                                    <select ng-model="profile.username" class="custom-select form-control-sm">
-                                        <option ng-repeat="user in users"
-                                                value="{{ user.id }}">{{ user.username }}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label for="full_name">Full name</label>
                                     <input id="full_name" type="text" ng-model="profile.full_name"
                                            placeholder="Full Name"
@@ -107,7 +100,7 @@
                         </div>
                     </form>
                     <button ng-click="addMember()" app-loading-indicator="saving" ng-disabled="!profileForm.$valid"
-                            class="btn btn-primary">Save
+                            class="btn btn-primary btn-sm">Save
                     </button>
                 </div>
             </div>
