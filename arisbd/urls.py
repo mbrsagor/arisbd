@@ -23,9 +23,10 @@ from django.urls import path, include, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('arisApp.urls')),
     path('api/auth/', include('rest_auth.urls')),
     path('api/rest-auth/registration', include('rest_auth.registration.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
+    re_path('', TemplateView.as_view(template_name='index.html')),
 
 ]
 
