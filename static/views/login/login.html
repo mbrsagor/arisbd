@@ -1,34 +1,40 @@
 <!-- ============================================================== -->
-    <!-- login page  -->
-    <!-- ============================================================== -->
-    <div class="splash-container">
-        <div style="margin-top: 200px;" class="card ">
-            <div class="card-header text-center"><a href="/"><img class="logo-img" src="static/assets/images/logo.png" alt="logo"></a>
-                <span class="splash-description">Login to your account  <small style="display:block;">Enter your credentials below</small></span>
-                <div ng-if="message" class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Oh snap!</strong> {{ message }}
-                </div>
-            </div>
-            <div class="card-body">
-                <form name="validationForm">
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="username" ng-model="username" type="text" placeholder="Username" autocomplete="off" required>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control form-control-lg" id="password" ng-model="password" type="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
-                        </label>
-                    </div>
-                    <button ng-click="userLoginButton()" type="submit" ng-disabled="validationForm.$invalid" class="btn btn-primary btn-lg btn-block">Sign in</button>
-                </form>
+<!-- login page  -->
+<!-- ============================================================== -->
+<div class="splash-container">
+    <div style="margin-top: 200px;" class="card ">
+        <div class="card-header text-center"><a href="/"><img class="logo-img" src="static/assets/images/logo.png"
+                                                              alt="logo"></a>
+            <span class="splash-description">Login to your account  <small style="display:block;">Enter your credentials below</small></span>
+            <div ng-if="message" class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <strong>Oh snap!</strong> {{ message }}
             </div>
         </div>
+        <div class="card-body">
+            <form name="validationForm">
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="username" ng-model="username" type="text"
+                           placeholder="Username" autocomplete="off" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" id="password" ng-model="password" type="password"
+                           placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">Remember Me</span>
+                    </label>
+                </div>
+                <button ng-click="userLoginButton()" type="submit" ng-disabled="validationForm.$invalid"
+                        class="btn btn-primary btn-lg btn-block">Sign in
+                </button>
+            </form>
+        </div>
     </div>
-  
-    <!-- ============================================================== -->
-    <!-- end login page  -->
-    <!-- ============================================================== -->
+</div>
+
+<!-- ============================================================== -->
+<!-- end login page  -->
+<!-- ============================================================== -->

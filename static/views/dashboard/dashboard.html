@@ -12,7 +12,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a ui-sref="app.dashboard"
-                                        class="breadcrumb-link">Dashboard</a></li>
+                                                                   class="breadcrumb-link">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ pageSubTitle }}</li>
                                 </ol>
                             </nav>
@@ -117,19 +117,19 @@
                                         </thead>
                                         <tbody>
                                         <tr ng-repeat="_profile in profile | limitTo:5">
-                                            <td>{{_profile.id}}</td>
+                                            <td>{{ _profile.id }}</td>
                                             <td>
-                                                <div class="m-r-10"><img src="{{_profile.profile_photo}}"
-                                                alt="user" class="rounded" width="45"></div>
+                                                <div class="m-r-10"><img src="{{ _profile.profile_photo }}"
+                                                                         alt="user" class="rounded" width="45"></div>
                                             </td>
-                                            <td>{{_profile.username.username}}</td>
-                                            <td>{{_profile.username.email}}</td>
-                                            <td>{{_profile.user_type}}</td>
-                                            <td>{{_profile.sex}}</td>
-                                            <td>{{_profile.address}}</td>
-                                            <td>{{_profile.bank_name}}</td>
-                                            <td>{{_profile.bank_count_no}}</td>
-                                            <td>{{_profile.username.last_login | date:'mediumDate'}}</td>
+                                            <td>{{ _profile.username.username }}</td>
+                                            <td>{{ _profile.username.email }}</td>
+                                            <td>{{ _profile.user_type }}</td>
+                                            <td>{{ _profile.sex }}</td>
+                                            <td>{{ _profile.address }}</td>
+                                            <td>{{ _profile.bank_name }}</td>
+                                            <td>{{ _profile.bank_count_no }}</td>
+                                            <td>{{ _profile.username.last_login | date:'mediumDate' }}</td>
                                             <td><span class="badge-dot badge-success mr-1"></span>Activate</td>
                                         </tr>
                                         </tbody>
@@ -164,12 +164,12 @@
                                         </thead>
                                         <tbody>
                                         <tr ng-repeat="product in products | limitTo:8">
-                                            <td>{{product.product_name}}</td>
-                                            <td>{{product.category}}</td>
-                                            <td>{{product.price}} BDT</td>
-                                            <td>{{product.discount_price}} BDT</td>
-                                            <td>{{product.date_created | date:'mediumDate'}}</td>
-                                            <td>{{product.last_updated | date:'mediumDate'}}</td>
+                                            <td>{{ product.product_name }}</td>
+                                            <td>{{ product.category }}</td>
+                                            <td>{{ product.price }} BDT</td>
+                                            <td>{{ product.discount_price }} BDT</td>
+                                            <td>{{ product.date_created | date:'mediumDate' }}</td>
+                                            <td>{{ product.last_updated | date:'mediumDate' }}</td>
                                         </tr>
                                         </tbody>
                                     </table>
