@@ -1,0 +1,159 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- page header  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">{{ pageTitle }}</h2>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a ui-sref="app.dashboard" class="breadcrumb-link"
+                                        >Dashboard</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Profile
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card card-fluid">
+                        <div class="card-img-top">
+                            <img
+                                    src="static/assets/images/cover-photo.png"
+                                    class=" img-fluid"
+                            />
+                        </div>
+                        <!-- .card-body -->
+                        <div class="card-body text-center">
+                            <!-- .user-avatar -->
+                            <a
+                                    href="javascript:void(0)"
+                                    class="user-avatar user-avatar-floated user-avatar-xl"
+                            >
+                                <img
+                                        src="{{ profile.profile_photo }}"
+                                        alt="User Avatar"
+                                        class="rounded-circle user-avatar-xl"
+                                />
+                            </a>
+                            <!-- /.user-avatar -->
+                            <h3 class="card-title mb-2">
+                                <a href="javascript:void(0)">{{ profile.full_name }}</a>
+                            </h3>
+                            <h6 class="card-subtitle text-muted mb-3">
+                                {{ profile.user_type }}
+                            </h6>
+                            <!-- grid row -->
+                            <div class="row">
+                                <!-- grid column -->
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <!-- .metric -->
+                                    <div class="metric">
+                                        <h6 class="metric-value">{{ profile.hand_type.length }}</h6>
+                                        <p class="metric-label">Left hand</p>
+                                    </div>
+                                    <!-- /.metric -->
+                                </div>
+                                <!-- /grid column -->
+                                <!-- grid column -->
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <!-- .metric -->
+                                    <div class="metric">
+                                        <h6 class="metric-value">{{ profile.hand_type.length }}</h6>
+                                        <p class="metric-label">Right hand</p>
+                                    </div>
+                                    <!-- /.metric -->
+                                </div>
+                                <!-- /grid column -->
+                                <!-- grid column -->
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                                    <!-- .metric -->
+                                    <div class="metric">
+                                        <h6 class="metric-value">107</h6>
+                                        <p class="metric-label">Total</p>
+                                    </div>
+                                    <!-- /.metric -->
+                                </div>
+                                <!-- /grid column -->
+                            </div>
+                            <!-- /grid row -->
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <section class="card card-fluid">
+                        <h5 class="card-header drag-handle">More Information</h5>
+                        <div style="padding: 10px;" class="more_information">
+                            <table class="table table-striped table-bordered first">
+                                <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>District</th>
+                                    <th>Thana</th>
+                                    <th>Union</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{ profile.username.username }}</td>
+                                    <td>{{ profile.full_name }}</td>
+                                    <td>{{ profile.username.email }}</td>
+                                    <td>{{ profile.district }}</td>
+                                    <td>{{ profile.thana }}</td>
+                                    <td>{{ profile.union }}</td>
+                                </tr>
+                                </tbody>
+                                <thead>
+                                <tr>
+                                    <th>Contact number</th>
+                                    <th>Sex</th>
+                                    <th>Bank name</th>
+                                    <th>Bank account</th>
+                                    <th>Joined</th>
+                                    <th>Last login</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>0{{ profile.contact_number }}</td>
+                                    <td>{{ profile.sex }}</td>
+                                    <td>{{ profile.bank_name }}</td>
+                                    <td>{{ profile.bank_count_no }}</td>
+                                    <td>{{ profile.username.date_joined | date:'mediumDate' }}</td>
+                                    <td>{{ profile.username.last_login | date:'mediumDate' }}</td>
+                                </tr>
+                                </tbody>
+                                <thead>
+                                <tr>
+                                    <th>User type</th>
+                                    <th colspan="5">Address</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{ profile.user_type }}</td>
+                                    <td colspan="5">{{ profile.address }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
