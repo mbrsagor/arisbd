@@ -14,3 +14,15 @@ The following steps will walk you thru installation on a Mac. Linux should be si
 It's also possible to develop on a Windows machine, but I have not documented the steps.
 If you've developed django apps on Windows, you should have little problem getting
 up and running.
+
+
+
+### Create Database
+
+Create the database by running the following commands in a mysql shell.
+First after installation mysql you may the command: example
+mysql -u root -p1234
+
+```
+create database "arsbd";
+```
