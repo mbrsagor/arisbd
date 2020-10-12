@@ -26,3 +26,26 @@ mysql -u root -p1234
 ```
 create database "arsbd";
 ```
+
+Assuming you've cloned the repository, open Terminal and `cd ~/your/path/to/arisbd`.
+
+Create a python virtual environment:
+
+```bash/zsh
+virtualenv venv --python=python3.8
+```
+
+Activate it:
+
+```bash/zsh
+source venv/bin/activate
+```
+
+Install the python dependancies which includes django and other libraries.
+
+```
+pip install -r requirements.txt
+
+python3 manage.py runserver # or
+./manage.py runserver
+```
