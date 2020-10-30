@@ -5,6 +5,7 @@ angular.module("Base", []);
 angular.module("Profile", []);
 angular.module("Product", []);
 angular.module("addAgentMemberController", []);
+angular.module("profileUpdateController", []);
 
 var app = angular.module("arisApp", [
   "arisApp.services",
@@ -13,6 +14,7 @@ var app = angular.module("arisApp", [
   "Base",
   "Product",
   'addAgentMemberController',
+  'profileUpdateController',
   "User",
   "ui.router",
   "ui.bootstrap",
@@ -82,6 +84,15 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", "$httpP
           "main-pane": {
             templateUrl: "static/views/addAgentMember/addAgentMember.html",
             controller: "addAgentMemberController"
+          }
+        }
+      })
+      .state("app.profileUpdate", {
+        url: "/profile_update",
+        views: {
+          "main-pane": {
+            templateUrl: "static/views/profile/profileUpdate.html",
+            controller: "profileUpdateController"
           }
         }
       })

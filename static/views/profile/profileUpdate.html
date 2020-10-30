@@ -1,0 +1,109 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+            <!-- ============================================================== -->
+            <!-- page header  -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">{{ pageTitle }}</h2>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a ui-sref="app.dashboard" class="breadcrumb-link"
+                                        >Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ pageTitle }}</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <form name="profileForm">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="full_name">Full name</label>
+                                    <input id="full_name" type="text" ng-model="profile.full_name"
+                                           placeholder="Full Name"
+                                           class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hand_type">Select hand</label>
+                                    <select ng-model="profile.hand_type" class="custom-select form-control-sm">
+                                        <option value="left">Left Hand</option>
+                                        <option value="right">Right Hand</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact_number">Phone number</label>
+                                    <input id="contact_number" type="number" ng-model="profile.contact_number"
+                                           placeholder="Phone number"
+                                           class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sex">Select Gender</label>
+                                    <select ng-model="profile.sex" class="custom-select form-control-sm">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Your address</label>
+                                    <textarea class="form-control" ng-model="profile.address"
+                                              placeholder="Enter your address" id="address" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="user_type">Select Agent/Member</label>
+                                    <select ng-model="profile.user_type" class="custom-select form-control-sm">
+                                        <option ng-if="profile.username.is_superuser" value="agent">Agent</option>
+                                        <option value="member">Member</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">District</label>
+                                    <input id="district" type="text" ng-model="profile.district"
+                                           placeholder="District Name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="thana">Thana</label>
+                                    <input id="thana" type="text" ng-model="profile.thana" placeholder="Thana"
+                                           class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="union">Union</label>
+                                    <input id="union" type="text" ng-model="profile.union" placeholder="Union"
+                                           class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank_name">Bank Name</label>
+                                    <input id="bank_name" type="text" ng-model="profile.bank_name"
+                                           placeholder="Bank Name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bank_count_no">Bank account number </label>
+                                    <input id="bank_count_no" type="number" ng-model="profile.bank_count_no"
+                                           placeholder="Bank account number" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile_photo">Profile Image</label>
+                                    <input id="profile_photo" type="file" ng-model="profile.profile_photo"
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button ng-click="addMember()" app-loading-indicator="saving" ng-disabled="!profileForm.$valid"
+                            class="btn btn-primary btn-sm">Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
