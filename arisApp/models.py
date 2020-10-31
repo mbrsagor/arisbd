@@ -2,7 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Profile(models.Model):
+class DomainEntity(models.Model):
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
+
+
+class Profile(DomainEntity):
     username = models.OneToOneField(User, related_name='users', on_delete=models.SET_NULL, null=True)
     full_name = models.CharField(max_length=30)
     address = models.TextField()
@@ -29,21 +34,17 @@ class Profile(models.Model):
     )
     user_type = models.CharField(max_length=8, choices=select_user)
     hand_type = models.CharField(max_length=6, choices=select_hand)
-    date_created = models.DateTimeField(auto_now_add=True)
-    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.full_name
 
 
-class Product(models.Model):
+class Product(DomainEntity):
     product_name = models.CharField(max_length=100)
     category = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
     product_image = models.ImageField(upload_to='product', blank=True, null=True)
     discount_price = models.IntegerField(default=0)
-    date_created = models.DateTimeField(auto_now_add=True)
-    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.product_name
