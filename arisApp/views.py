@@ -4,11 +4,14 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from django.contrib.auth.models import User
 
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+
 from .models import Profile, Product
 from .serializers import ProfileSerializer, UserSerializer, ProductSerializer
 
 
 class ProfileView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request):
         queryset = Profile.objects.get(id=self.request.user.id)
@@ -17,6 +20,7 @@ class ProfileView(APIView):
 
 
 class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request):
         queryset = Profile.objects.all()
@@ -32,6 +36,7 @@ class UserProfileView(APIView):
 
 
 class ProfileDetailsView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request, id):
         queryset = get_object_or_404(Profile, id=id)
@@ -53,6 +58,7 @@ class ProfileDetailsView(APIView):
 
 
 class UserCreateListView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request):
         queryset = User.objects.all()
@@ -89,6 +95,7 @@ class UserDetailsDeleteView(APIView):
 
 
 class ProductAPIView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request):
         queryset = Product.objects.all()
@@ -104,6 +111,7 @@ class ProductAPIView(APIView):
 
 
 class ProductUpdateDeleteApiView(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request, id):
         queryset = get_object_or_404(Product, id=id)
@@ -125,6 +133,7 @@ class ProductUpdateDeleteApiView(APIView):
 
 
 class ListOfAgent(APIView):
+    permission_classes = [IsAuthenticated, ]
 
     def get(self, request):
         queryset = Profile.objects.filter(user_type='agent')
@@ -133,6 +142,7 @@ class ListOfAgent(APIView):
 
 
 class ListOfMember(APIView):
+    permission_classes = IsAdminUser
 
     def get(self, request):
         queryset = Profile.objects.filter(user_type='member')
