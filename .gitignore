@@ -1,1 +1,21 @@
-venv*.pyc*.sqlite3.ideavenv/.cache# IDE.pylintrctox.ini.vscode/*.ideavenv.mypy_cache*.dbmediaenv__pycache__
+venv
+*.pyc
+*.sqlite3
+.idea
+venv/
+.cache
+
+
+# IDE
+.pylintrc
+tox.ini
+.vscode/*
+.idea
+
+venv
+.mypy_cache
+*.db
+
+media
+env
+__pycache__
