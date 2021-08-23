@@ -4,10 +4,9 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from django.contrib.auth.models import User
 
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
 from .models import Profile, Product
 from .serializers import ProfileSerializer, UserSerializer, ProductSerializer
+from .permissions import AuthorAllStaffAllButEditOrReadOnly
 
 
 class ProfileView(APIView):
