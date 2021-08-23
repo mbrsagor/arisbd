@@ -7,7 +7,7 @@ Angular.JS and Django rest (API) framework using MML use management poject
 
 - Python 3.8.5 
 - Django 3.0
-- Mysql 8.0.19
+- Postgresql 13.2
 
 
 The following steps will walk you thru installation on a Mac. Linux should be similar.
@@ -17,20 +17,9 @@ up and running.
 
 
 
-### Create Database
-
-Create the database by running the following commands in a mysql shell.
-First after installation mysql you may the command: example
-mysql -u root -p1234
-
-```
-create database "arsbd";
-```
-
 Assuming you've cloned the repository, open Terminal and `cd ~/your/path/to/arisbd`.
 
 Create a python virtual environment:
-
 ```bash/zsh
 virtualenv venv --python=python3.8
 ```
@@ -41,11 +30,14 @@ Activate it:
 source venv/bin/activate
 ```
 
-Install the python dependancies which includes django and other libraries.
+Then create `.env` file and paste code from the `.env-sample` file otherwise your server doesn't run.  
+
+Install the python dependencies which includes Django and other libraries.
 
 ```
 pip install -r requirements.txt
-
+python manage.py migrate
+python manage.py createsuperuser
 python3 manage.py runserver # or
 ./manage.py runserver
 ```
