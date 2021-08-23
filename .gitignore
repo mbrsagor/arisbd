@@ -17,5 +17,5 @@ venv
 *.db
 
 media
-env
+.env
 __pycache__
