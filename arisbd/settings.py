@@ -1,4 +1,5 @@
 import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -6,13 +7,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list),
+)
+envfile_path = os.path.join(BASE_DIR, '.env')
+environ.Env.read_env(envfile_path)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm6_+05_0rh2d5e0e=17h8fo+ya#=xdmx)b*%^ve_m^t@004tz8'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -97,11 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'arisbd',
-        'USER': 'mbr-saogr',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USERNAME"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
     }
 }
 
