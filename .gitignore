@@ -4,8 +4,7 @@ venv
 .idea
 venv/
 .cache
-
-
+.idea/
 # IDE
 .pylintrc
 tox.ini
