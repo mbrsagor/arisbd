@@ -1,13 +1,14 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST, HTTP_201_CREATED
 from django.contrib.auth.models import User
 
 from .models import Profile, Product, Category
 from .serializers import ProfileSerializer, UserSerializer, ProductSerializer, CategorySerializer
 from .permissions import AuthorAllStaffAllButEditOrReadOnly
-from utils.custom_responses import prepare_success_response, prepare_error_response
+from utils.custom_responses import prepare_success_response, prepare_error_response, prepare_create_success_response
+from utils.category_valiidation import validate_category_data
 
 
 class ProfileView(APIView):
@@ -145,8 +146,29 @@ class CategoryAPIView(APIView):
                 status=HTTP_400_BAD_REQUEST
             )
 
-    def post(self):
-        pass
+    def post(self, request):
+        validate_error = validate_category_data(request.data)
+        if validate_error is not None:
+            return Response(prepare_error_response(validate_error), status=HTTP_400_BAD_REQUEST)
+        serializer = CategorySerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(prepare_create_success_response(serializer.data), status=HTTP_201_CREATED)
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+    def put(self, request, pk):
+        validate_error = validate_category_data(request.data)
+        if validate_error is not None:
+            return Response(prepare_error_response(validate_error), status=HTTP_400_BAD_REQUEST)
+        category = Category.objects.get(pk=id).first()
+        if category is not None:
+            serializer = CategorySerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(prepare_create_success_response(serializer.data), status=HTTP_201_CREATED)
+            return Response(prepare_error_response(serializer.errors), status=HTTP_400_BAD_REQUEST)
+        else:
+            return Response(prepare_error_response("No data found for this ID"), status=HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
         category = self.get_object(pk)
