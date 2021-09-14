@@ -39,6 +39,14 @@ class Profile(DomainEntity):
         return self.full_name
 
 
+class Category(DomainEntity):
+    category_name = models.CharField(max_length=120)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.category_name
+
+
 class Product(DomainEntity):
     product_name = models.CharField(max_length=100)
     category = models.CharField(max_length=50)

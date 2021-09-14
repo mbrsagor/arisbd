@@ -4,9 +4,10 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from django.contrib.auth.models import User
 
-from .models import Profile, Product
-from .serializers import ProfileSerializer, UserSerializer, ProductSerializer
+from .models import Profile, Product, Category
+from .serializers import ProfileSerializer, UserSerializer, ProductSerializer, CategorySerializer
 from .permissions import AuthorAllStaffAllButEditOrReadOnly
+from utils.custom_responses import prepare_success_response, prepare_error_response
 
 
 class ProfileView(APIView):
@@ -123,6 +124,37 @@ class ProductUpdateDeleteApiView(APIView):
         queryset = get_object_or_404(Product, id=id)
         queryset.delete()
         return Response(HTTP_400_BAD_REQUEST)
+
+
+class CategoryAPIView(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Category.objects.filter(id=pk).first()
+        except Category.DoesNotExist:
+            return None
+
+    def get(self, request):
+        try:
+            category = Category.objects.all()
+            serializer = CategorySerializer(category, many=True)
+            return Response(prepare_success_response(serializer.data), status=HTTP_200_OK)
+        except Exception as e:
+            return Response(
+                prepare_error_response(str(e)),
+                status=HTTP_400_BAD_REQUEST
+            )
+
+    def post(self):
+        pass
+
+    def delete(self, request, pk):
+        category = self.get_object(pk)
+        if category is not None:
+            category.delete()
+            return Response(prepare_success_response("Data deleted successfully"), status=HTTP_200_OK)
+        else:
+            return Response(prepare_error_response("Content Not found"), status=HTTP_400_BAD_REQUEST)
 
 
 class ListOfAgent(APIView):
