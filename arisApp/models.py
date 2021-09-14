@@ -40,16 +40,16 @@ class Profile(DomainEntity):
 
 
 class Category(DomainEntity):
-    category_name = models.CharField(max_length=120)
+    title = models.CharField(max_length=120)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.category_name
+        return self.title
 
 
 class Product(DomainEntity):
     product_name = models.CharField(max_length=100)
-    category = models.CharField(max_length=50)
+    category_name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
     product_image = models.ImageField(upload_to='product', blank=True, null=True)
     discount_price = models.IntegerField(default=0)
